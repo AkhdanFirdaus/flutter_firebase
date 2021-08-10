@@ -1,17 +1,9 @@
-class User {
-  final String uid;
-
-  User({required this.uid});
-}
-
-class UserData {
-  final String uid;
+class Brew {
   final String name;
   final String sugars;
   final int strength;
 
-  UserData({
-    required this.uid,
+  Brew({
     required this.name,
     required this.sugars,
     required this.strength,

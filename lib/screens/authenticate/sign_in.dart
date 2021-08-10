@@ -1,3 +1,4 @@
+import 'package:brew_crew/services/exception.dart';
 import 'package:brew_crew/shared/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,8 @@ class _SignInState extends State<SignIn> {
                   children: [
                     SizedBox(height: 20),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
                       validator: (val) =>
                           val!.isEmpty ? "Enter an email" : null,
                       onChanged: (val) {
@@ -90,14 +93,15 @@ class _SignInState extends State<SignIn> {
                             setState(() {
                               loading = true;
                             });
-                            dynamic result =
-                                _authService.signInWithEmilPassword(
-                              email: email,
-                              password: password,
-                            );
-                            if (result == null) {
+
+                            try {
+                              await _authService.signInWithEmilPassword(
+                                email: email,
+                                password: password,
+                              );
+                            } on ErrorMessage catch (e) {
                               setState(() {
-                                error = "Please provide a valid email";
+                                error = e.message;
                                 loading = false;
                               });
                             }

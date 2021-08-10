@@ -1,4 +1,6 @@
 import 'package:brew_crew/models/user.dart' as localUser;
+import 'package:brew_crew/services/database.dart';
+import 'package:brew_crew/services/exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthContracts {
@@ -63,10 +65,20 @@ class AuthService implements AuthContracts {
         email: email,
         password: password,
       );
-      return _userFromFirebaseUser(result.user);
+
+      User? user = result.user;
+
+      //Create initial brew dummy data
+      await DatabaseService(uid: user!.uid).updateUserData(
+        sugars: '0',
+        name: 'new crew member',
+        strength: 100,
+      );
+
+      return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
-      return null;
+      throw ErrorMessage(e.toString());
     }
   }
 
@@ -80,10 +92,14 @@ class AuthService implements AuthContracts {
         email: email,
         password: password,
       );
-      return _userFromFirebaseUser(result.user);
+      if (result.user != null) {
+        return _userFromFirebaseUser(result.user);
+      } else {
+        throw ErrorMessage("User tidak ditemukan");
+      }
     } catch (e) {
       print(e.toString());
-      return null;
+      throw ErrorMessage(e.toString());
     }
   }
 }

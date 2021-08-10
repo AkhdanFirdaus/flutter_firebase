@@ -16,13 +16,13 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Brew Crew',
-      theme: AppTheme.defaultTheme,
-      home: StreamProvider<User?>.value(
-        initialData: null,
-        value: AuthService().user,
-        child: Wrapper(),
+    return StreamProvider<User?>.value(
+      initialData: null,
+      value: AuthService().user,
+      child: MaterialApp(
+        title: 'Brew Crew',
+        theme: AppTheme.defaultTheme,
+        home: Wrapper(),
       ),
     );
   }

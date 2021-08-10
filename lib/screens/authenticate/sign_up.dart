@@ -1,6 +1,8 @@
-import 'package:brew_crew/models/user.dart';
-import 'package:brew_crew/services/auth.dart';
+import 'package:brew_crew/services/exception.dart';
 import 'package:flutter/material.dart';
+
+import '../../services/auth.dart';
+import '../../shared/loading.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggleView;
@@ -54,6 +56,8 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     SizedBox(height: 20),
                     TextFormField(
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
                       validator: (val) =>
                           val!.isEmpty ? "Enter an email" : null,
                       onChanged: (val) {
@@ -61,6 +65,9 @@ class _SignUpState extends State<SignUp> {
                           email = val;
                         });
                       },
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                      ),
                     ),
                     SizedBox(height: 20),
                     TextFormField(
@@ -73,6 +80,9 @@ class _SignUpState extends State<SignUp> {
                         });
                       },
                       obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                      ),
                     ),
                     SizedBox(height: 20),
                     FractionallySizedBox(
@@ -83,14 +93,15 @@ class _SignUpState extends State<SignUp> {
                             setState(() {
                               loading = true;
                             });
-                            dynamic result =
-                                _authService.registerWithEmailPassword(
-                              email: email,
-                              password: password,
-                            );
-                            if (result == null) {
+
+                            try {
+                              await _authService.registerWithEmailPassword(
+                                email: email,
+                                password: password,
+                              );
+                            } on ErrorMessage catch (e) {
                               setState(() {
-                                error = "Please provide a valid email";
+                                error = e.message;
                                 loading = true;
                               });
                             }
