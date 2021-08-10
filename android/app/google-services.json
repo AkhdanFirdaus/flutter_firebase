@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "141467314621",
+    "project_id": "simple-brew-crew-e34a2",
+    "storage_bucket": "simple-brew-crew-e34a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141467314621:android:faaa059f1a0f2fc3fb4ad4",
+        "android_client_info": {
+          "package_name": "com.akhdanfirdaus.brew_crew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141467314621-39dpurrns9flntjdsjl2bm0qg7h6mcul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWSGxSa_txG_UKs3lfrRVKqVtMvhKuU0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141467314621-39dpurrns9flntjdsjl2bm0qg7h6mcul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
