@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/brew.dart';
 import '../../services/auth.dart';
-import '../../services/database.dart';
+import '../../services/database/brew_database.dart';
 import 'brew_list.dart';
 import 'settings_form.dart';
 
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
 
     return StreamProvider<List<Brew>>.value(
       initialData: [],
-      value: DatabaseService().brews,
+      value: BrewDatabaseService().brews,
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(

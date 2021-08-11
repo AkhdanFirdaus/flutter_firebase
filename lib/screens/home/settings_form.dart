@@ -2,7 +2,7 @@ import 'package:brew_crew/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/user.dart';
-import '../../services/database.dart';
+import '../../services/database/database.dart';
 
 class SettingsForm extends StatefulWidget {
   @override
@@ -20,11 +20,11 @@ class _SettingsFormState extends State<SettingsForm> {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<User?>();
-    return StreamBuilder<UserData>(
-      stream: DatabaseService(uid: user!.uid).userData,
+    return StreamBuilder<UserBrewData>(
+      stream: BrewDatabaseService(uid: user!.uid).userBrewData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          UserData userData = snapshot.data!;
+          UserBrewData userData = snapshot.data!;
           return Form(
             key: _formKey,
             child: Column(
@@ -76,7 +76,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        await DatabaseService(uid: user.uid).updateUserData(
+                        await BrewDatabaseService(uid: user.uid).updateData(
                           sugars: _currentSugars ?? userData.sugars,
                           name: _currentName ?? userData.name,
                           strength: _currentStrength ?? userData.strength,

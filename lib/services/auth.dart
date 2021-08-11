@@ -1,5 +1,5 @@
 import 'package:brew_crew/models/user.dart' as localUser;
-import 'package:brew_crew/services/database.dart';
+import 'package:brew_crew/services/database/brew_database.dart';
 import 'package:brew_crew/services/exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -69,7 +69,7 @@ class AuthService implements AuthContracts {
       User? user = result.user;
 
       //Create initial brew dummy data
-      await DatabaseService(uid: user!.uid).updateUserData(
+      await BrewDatabaseService(uid: user!.uid).updateData(
         sugars: '0',
         name: 'new crew member',
         strength: 100,
