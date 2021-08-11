@@ -1,8 +1,8 @@
-import 'package:brew_crew/services/exception.dart';
-import 'package:brew_crew/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/auth.dart';
+import '../../services/exception.dart';
+import '../../shared/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;

@@ -1,7 +1,7 @@
-import 'package:brew_crew/services/exception.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/auth.dart';
+import '../../services/exception.dart';
 import '../../shared/loading.dart';
 
 class SignUp extends StatefulWidget {

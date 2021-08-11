@@ -1,8 +1,9 @@
-import 'package:brew_crew/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../models/user.dart';
-import '../../services/database/database.dart';
+import '../../services/database/brew_database.dart';
+import '../../shared/loading.dart';
 
 class SettingsForm extends StatefulWidget {
   @override

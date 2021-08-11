@@ -1,6 +1,7 @@
-import 'package:brew_crew/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../models/brew.dart';
+import '../../models/user.dart';
 
 abstract class BrewDatabaseContracts {
   Future updateData({

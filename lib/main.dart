@@ -1,4 +1,3 @@
-import 'package:brew_crew/shared/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'models/user.dart';
 import 'screens/wrapper.dart';
 import 'services/auth.dart';
+import 'shared/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

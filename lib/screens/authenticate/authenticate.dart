@@ -1,6 +1,7 @@
-import 'package:brew_crew/screens/authenticate/sign_in.dart';
-import 'package:brew_crew/screens/authenticate/sign_up.dart';
 import 'package:flutter/material.dart';
+
+import 'sign_in.dart';
+import 'sign_up.dart';
 
 class Authenticate extends StatefulWidget {
   Authenticate({Key? key}) : super(key: key);
